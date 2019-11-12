@@ -8,6 +8,10 @@ public class Subject {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String title;
+
+    public Subject() {
+    }
+
     private String disc;
 
     public Subject(String title, String disc) {
@@ -38,20 +42,6 @@ public class Subject {
     public void setDisc(String disc) {
         this.disc = disc;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

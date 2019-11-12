@@ -11,10 +11,12 @@ import com.example.mockitodemo.model.Subject;
 
 import java.util.List;
 
+
 public class SubjectViewModel extends AndroidViewModel {
 
     private SubjectRepository subjectRepository;
     private LiveData<List<Subject>> allsub;
+
 
     public SubjectViewModel(@NonNull Application application) {
         super(application);
@@ -25,6 +27,7 @@ public class SubjectViewModel extends AndroidViewModel {
 
     public void insert(Subject subject) {
         subjectRepository.insert(subject);
+
     }
 
     public void update(Subject subject) {

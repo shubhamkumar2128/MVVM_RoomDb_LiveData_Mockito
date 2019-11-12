@@ -5,24 +5,29 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.mockitodemo.database.SubjectDatabase;
 import com.example.mockitodemo.dao.SubjectDao;
+import com.example.mockitodemo.database.SubjectDatabase;
 import com.example.mockitodemo.model.Subject;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class SubjectRepository {
     private SubjectDao subjectDao;
     private LiveData<List<Subject>> allsub;
 
+
     public SubjectRepository(Application application) {
         SubjectDatabase subjectDatabase = SubjectDatabase.getInstance(application);
         subjectDao = subjectDatabase.subjectDao();
         allsub = subjectDao.getAllSubjects();
+
     }
 
-    public void insert(Subject subject) {
+
+    public void insert(Subject subject)  {
         new InsertAsyncTask(subjectDao).execute(subject);
+
     }
 
     public void update(Subject subject) {
@@ -52,7 +57,10 @@ public class SubjectRepository {
         protected Void doInBackground(Subject... subjects) {
             subjectDao.insert(subjects[0]);
             return null;
+
         }
+
+
     }
 
     public static class UpdateAsyncTask extends AsyncTask<Subject, Void, Void> {
